@@ -49,6 +49,7 @@ logger = logging.getLogger(__name__)
 
 class Warehouse(NamedMixin, TimeStampMixin, models.Model):
     _allow_in_dashboard = True
+    """If true starts stocktaking process only for specified warehouse"""
     stocktaking_enabled = models.BooleanField(default=False)
 
 

@@ -152,19 +152,20 @@ class AssetList(Table):
                 '<div class="small-12 columns label alert">missing</div>'
             )
         else:
-            return '<a class="small-6 columns label success" href="{}">{}</a>' \
-                    '<a class="small-6 columns label alert" href="{}">' \
-                    '{}</a>'.format(
-                        reverse(
+            return '<a class="small-6 columns label success" ' \
+                   'href="{confirm_url}">{confirm_caption}</a>' \
+                    '<a class="small-6 columns label alert" ' \
+                   'href="{deny_url}">{deny_caption}</a>'.format(
+                        confirm_url=reverse(
                             'inventory_tag_confirmation',
                             args=[item.id, 'yes']
                         ),
-                        _('yes'),
-                        reverse(
+                        confirm_caption=_('yes'),
+                        deny_url=reverse(
                             'inventory_tag_confirmation',
                             args=[item.id, 'no']
                         ),
-                        _('no')
+                        deny_caption=_('no')
                     )
     confirm_ownership.title = _('Do you have it?')
 
